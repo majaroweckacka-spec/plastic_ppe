@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>plastic_ppe - PVC</title>
+<title>plastic_ppe — PVC</title>
+
 <style>
 body {
   margin:0;
@@ -10,20 +11,58 @@ body {
   display:flex;
   justify-content:center;
   align-items:center;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   background:#e74c3c;
   color:white;
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   text-align:center;
+  animation: pulseRed 2.5s infinite;
 }
-h1 { font-size:34px; }
-p { font-size:22px; font-weight:bold; }
+
+@keyframes pulseRed {
+  0% { background:#e74c3c; }
+  50% { background:#c0392b; }
+  100% { background:#e74c3c; }
+}
+
+.container {
+  opacity:0;
+  transform:scale(0.95);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+h1 {
+  font-size:48px;
+  letter-spacing:4px;
+  margin:0;
+}
+
+.warning {
+  font-size:22px;
+  font-weight:600;
+  margin-top:15px;
+}
+
+.tap {
+  margin-top:30px;
+  font-size:15px;
+  opacity:0.7;
+}
+
 </style>
 </head>
 <body>
 
-<div>
+<div class="container">
   <h1>PVC</h1>
-  <p>URGENT WARNING</p>
+  <div class="warning">URGENT WARNING</div>
+  <div class="tap">Tap screen to activate alert</div>
 </div>
 
 <audio id="sound">
@@ -31,12 +70,17 @@ p { font-size:22px; font-weight:bold; }
 </audio>
 
 <script>
-window.onload = function() {
+function activateAlert() {
+
   if (navigator.vibrate) {
-    navigator.vibrate([300,100,300,100,300]);
+    navigator.vibrate([400,120,400,120,400]);
   }
-  document.getElementById("sound").play().catch(()=>{});
-};
+
+  const sound = document.getElementById("sound");
+  sound.play().catch(()=>{});
+}
+
+document.body.addEventListener("click", activateAlert, { once: true });
 </script>
 
 </body>
