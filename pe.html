@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>plastic_ppe - PE</title>
+<style>
+body {
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f1c40f;
+  color:black;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  text-align:center;
+}
+h1 { font-size:34px; }
+p { font-size:22px; }
+</style>
+</head>
+<body>
+
+<div>
+  <h1>PE</h1>
+  <p>SOFT WARNING</p>
+</div>
+
+<audio id="sound">
+  <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
+</audio>
+
+<script>
+window.onload = function() {
+  if (navigator.vibrate) {
+    navigator.vibrate([150,100,150]);
+  }
+  document.getElementById("sound").play().catch(()=>{});
+};
+</script>
+
+</body>
+</html>
