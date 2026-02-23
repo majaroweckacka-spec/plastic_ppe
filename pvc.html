@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>plastic_ppe - PVC</title>
+<style>
+body {
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#e74c3c;
+  color:white;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  text-align:center;
+}
+h1 { font-size:32px; }
+p { font-size:22px; }
+</style>
+</head>
+<body>
+
+<div>
+  <h1>PVC</h1>
+  <p>URGENT WARNING</p>
+</div>
+
+<audio id="alertSound">
+  <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
+</audio>
+
+<script>
+window.onload = function() {
+
+  // Vibration (works on many phones, including some iPhones)
+  if (navigator.vibrate) {
+    navigator.vibrate([200,100,200]);
+  }
+
+  // Sound (user interaction may be required on some iPhones)
+  document.getElementById("alertSound").play().catch(()=>{});
+
+};
+</script>
+
+</body>
+</html>
