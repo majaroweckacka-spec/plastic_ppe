@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>plastic_ppe - PE</title>
+<title>plastic_ppe — PE</title>
+
 <style>
 body {
   margin:0;
@@ -10,20 +11,44 @@ body {
   display:flex;
   justify-content:center;
   align-items:center;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   background:#f1c40f;
   color:black;
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   text-align:center;
+  animation: pulseYellow 3s infinite;
 }
-h1 { font-size:34px; }
-p { font-size:22px; }
+
+@keyframes pulseYellow {
+  0% { background:#f1c40f; }
+  50% { background:#d4ac0d; }
+  100% { background:#f1c40f; }
+}
+
+.container {
+  opacity:0;
+  transform:scale(0.95);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+h1 { font-size:48px; letter-spacing:4px; margin:0; }
+.warning { font-size:22px; margin-top:15px; font-weight:600; }
+.tap { margin-top:30px; font-size:15px; opacity:0.6; }
+
 </style>
 </head>
 <body>
 
-<div>
+<div class="container">
   <h1>PE</h1>
-  <p>SOFT WARNING</p>
+  <div class="warning">SOFT WARNING</div>
+  <div class="tap">Tap screen to activate alert</div>
 </div>
 
 <audio id="sound">
@@ -31,12 +56,13 @@ p { font-size:22px; }
 </audio>
 
 <script>
-window.onload = function() {
+function activateAlert() {
   if (navigator.vibrate) {
     navigator.vibrate([150,100,150]);
   }
   document.getElementById("sound").play().catch(()=>{});
-};
+}
+document.body.addEventListener("click", activateAlert, { once: true });
 </script>
 
 </body>
