@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>plastic_ppe — PVC</title>
+<title>plastic_ppe — HDPE</title>
 
 <style>
 body {
@@ -12,16 +12,16 @@ body {
   justify-content:center;
   align-items:center;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:#e74c3c;
+  background:#2ecc71;
   color:white;
   text-align:center;
-  animation: pulseRed 2.5s infinite;
+  animation: pulseGreen 2.5s infinite;
 }
 
-@keyframes pulseRed {
-  0% { background:#e74c3c; }
-  50% { background:#c0392b; }
-  100% { background:#e74c3c; }
+@keyframes pulseGreen {
+  0% { background:#2ecc71; }
+  50% { background:#27ae60; }
+  100% { background:#2ecc71; }
 }
 
 .container {
@@ -43,45 +43,19 @@ h1 {
   margin:0;
 }
 
-.warning {
-  font-size:22px;
-  font-weight:600;
-  margin-top:15px;
-}
-
 .tap {
   margin-top:30px;
   font-size:15px;
   opacity:0.7;
 }
-
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>PVC</h1>
-  <div class="warning">URGENT WARNING</div>
-  <div class="tap">Tap screen to activate alert</div>
+  <h1>HDPE</h1>
+  <div class="tap">Material recognized</div>
 </div>
-
-<audio id="sound">
-  <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" type="audio/ogg">
-</audio>
-
-<script>
-function activateAlert() {
-
-  if (navigator.vibrate) {
-    navigator.vibrate([400,120,400,120,400]);
-  }
-
-  const sound = document.getElementById("sound");
-  sound.play().catch(()=>{});
-}
-
-document.body.addEventListener("click", activateAlert, { once: true });
-</script>
 
 </body>
 </html>
